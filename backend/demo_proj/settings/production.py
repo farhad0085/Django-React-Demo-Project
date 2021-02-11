@@ -1,9 +1,8 @@
 from .base import *
 import os
 
-ALLOWED_HOSTS = ['*']
-
 DEBUG = False
+ALLOWED_HOSTS = ['*']
 
 DATABASES = {
     'default': {
@@ -15,19 +14,3 @@ DATABASES = {
         'PORT': os.environ.get('DB_PORT'),
     }
 }
-
-REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.TokenAuthentication',
-    ],
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated',
-    ]
-}
-
-# please change this in production.
-CORS_ALLOWED_ORIGINS = [
-    "http://159.89.210.29",
-    "http://localhost:3000",
-    "http://127.0.0.1:3000"
-]

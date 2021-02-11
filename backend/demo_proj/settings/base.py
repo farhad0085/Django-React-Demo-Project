@@ -15,8 +15,6 @@ def convert_to_bool(string):
 ENVIRONMENT = os.environ.get("ENVIRONMENT")
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
-ALLOWED_HOSTS = []
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -29,12 +27,10 @@ INSTALLED_APPS = [
     
     # rest
     'rest_framework',
-    'rest_framework.authtoken',
     'corsheaders',
 ]
 
 WSGI_APPLICATION = 'demo_proj.wsgi.application'
-SITE_ID = 1
 
 
 MIDDLEWARE = [
@@ -79,3 +75,15 @@ USE_L10N = True
 USE_TZ = True
 
 STATIC_URL = '/static/'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny',
+    ]
+}
+
+CORS_ORIGIN_ALLOW_ALL = True
